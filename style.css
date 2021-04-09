@@ -17,7 +17,7 @@ button {
 
 #screen {
     display:block;
-    font-family: sans-serif;
+    font-family: monospace;
     width:230px;
     height:40px;
     margin:10px auto;

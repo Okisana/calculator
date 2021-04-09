@@ -3,12 +3,13 @@ let activeOperator = '';
 let secondNumber = '';
 
 function numberIsPressed(number){
-  firstNumber += number;
-  if(number =='.'){
-    parseFloat(number);
+ if(firstNumber.length > 13){
+    return;
   }
+  firstNumber += number;
   console.log(number);
   updateScreen();
+  
 }
 
 function operatorIsPressed(operator) {
@@ -42,16 +43,19 @@ function doMath () {
       case '+':
         firstNumber = parseFloat(secondNumber) + parseFloat(firstNumber);
         break;
-        case '-':
-        firstNumber =  parseFloat(secondNumber) - parseFloat(firstNumber);
+        case '-': 
+          firstNumber = parseFloat(secondNumber) - parseFloat(firstNumber);
         break; 
         case '*':
-        firstNumber = parseFloat(secondNumber) * parseFloat(firstNumber); 
+          firstNumber = parseFloat(secondNumber) * parseFloat(firstNumber); 
         break;
         case '/':
-        firstNumber = parseFloat(secondNumber) / parseFloat(firstNumber);
+          firstNumber = (parseFloat(secondNumber) / parseFloat(firstNumber));
     }
     firstNumber = firstNumber.toFixed(2);
+    if(firstNumber.endsWith('.00')){
+      firstNumber = parseInt(firstNumber,10);
+    } 
     updateScreen();
   }
 }
